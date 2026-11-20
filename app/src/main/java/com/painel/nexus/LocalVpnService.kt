@@ -4,8 +4,8 @@ import android.content.Intent
 import android.net.VpnService
 import android.os.ParcelFileDescriptor
 
-// VPN local: sobe um tun so pra 10.77.0.0/24. o resto do trafego nao passa por aqui.
-// o loop de leitura roda nesse servico, o VpnService em si nao le memoria.
+// vpn local: tun so pra 10.77.0.0/24, o resto do trafego nao passa por aqui.
+// o loop de leitura roda aqui e grava Cfg.snap. a ESP le daqui.
 class LocalVpnService : VpnService() {
     private var tun: ParcelFileDescriptor? = null
     private var worker: Thread? = null
@@ -18,17 +18,23 @@ class LocalVpnService : VpnService() {
             return START_NOT_STICKY
         }
         if (tun == null) {
-            tun = Builder()
-                .setSession("Painel Nexus VPN local")
-                .addAddress("10.77.0.2", 32)
-                .addRoute("10.77.0.0", 24)
-                .setMtu(1500)
-                .establish()
+            tun = try {
+                Builder()
+                    .setSession("Painel Nexus VPN local")
+                    .addAddress("10.77.0.2", 32)
+                    .addRoute("10.77.0.0", 24)
+                    .setMtu(1500)
+                    .establish()
+            } catch (e: Exception) {
+                null
+            }
             if (tun == null) {
+                Cfg.vpnStatus = "vpn não autorizada"
                 stopSelf()
                 return START_NOT_STICKY
             }
             Cfg.vpnOn = true
+            Cfg.vpnStatus = "vpn ligada"
             startLoop()
         }
         return START_STICKY
@@ -38,15 +44,24 @@ class LocalVpnService : VpnService() {
         worker = Thread {
             while (Cfg.vpnOn) {
                 if (!reader.alive()) {
-                    Cfg.snap = Snap.EMPTY
+                    if (!Cfg.demoOn) Cfg.snap = Snap.EMPTY
                     if (!reader.attach()) {
+                        Cfg.vpnStatus = "aguardando o jogo abrir"
                         Thread.sleep(500)
                         continue
                     }
                 }
-                Cfg.snap = poll()
+                if (!Off.ready()) {
+                    if (!Cfg.demoOn) Cfg.snap = Snap.EMPTY
+                    Cfg.vpnStatus = "jogo achado, offsets pendentes"
+                    Thread.sleep(200)
+                    continue
+                }
+                Cfg.vpnStatus = "lendo posições"
+                if (!Cfg.demoOn) Cfg.snap = poll()
                 Thread.sleep(2)
             }
+            Cfg.vpnStatus = "vpn desligada"
         }.also {
             it.isDaemon = true
             it.start()
@@ -54,7 +69,6 @@ class LocalVpnService : VpnService() {
     }
 
     private fun poll(): Snap {
-        if (!Off.ready()) return Snap.EMPTY
         val base = reader.base
         val list = reader.long(base + Off.PLAYER_LIST)
         val total = minOf(reader.int(base + Off.PLAYER_COUNT), Off.MAX_PLAYERS)
@@ -83,7 +97,8 @@ class LocalVpnService : VpnService() {
         try { tun?.close() } catch (e: Exception) { }
         tun = null
         reader.detach()
-        Cfg.snap = Snap.EMPTY
+        if (!Cfg.demoOn) Cfg.snap = Snap.EMPTY
+        Cfg.vpnStatus = "vpn desligada"
     }
 
     override fun onDestroy() {

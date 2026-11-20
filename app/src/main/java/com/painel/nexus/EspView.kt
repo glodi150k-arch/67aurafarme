@@ -31,11 +31,17 @@ class EspView(c: Context) : View(c) {
         strokeWidth = 12f
     }
 
+    override fun onSizeChanged(w: Int, h: Int, ow: Int, oh: Int) {
+        super.onSizeChanged(w, h, ow, oh)
+        if (h > 0) Cfg.aspect = w.toFloat() / h
+    }
+
     override fun onDraw(cv: Canvas) {
         super.onDraw(cv)
-        val s = Cfg.snap
         val w = width.toFloat()
         val h = height.toFloat()
+        if (Cfg.demoOn) Cfg.snap = Demo.snap(System.nanoTime(), Cfg.aspect)
+        val s = Cfg.snap
         var front = 0
 
         if (s.count > 0 && s.matrix.any { it != 0f }) {

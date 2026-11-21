@@ -1,7 +1,4 @@
-*.iml
-.gradle/
-local.properties
-build/
-app/build/
-.idea/
-*.apk
+node_modules/
+__pycache__/
+*.log
+.env

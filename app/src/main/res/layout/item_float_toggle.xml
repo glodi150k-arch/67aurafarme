@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="32dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="FEATURE"
+        android:textColor="@color/text_primary"
+        android:textSize="11sp"/>
+
+    <Switch
+        android:id="@+id/swToggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:scaleX="0.75"
+        android:scaleY="0.75"
+        android:checked="false"
+        android:thumbTint="@color/text_primary"
+        android:trackTint="#E8003D"/>
+
+</LinearLayout>

@@ -13,4 +13,4 @@ dependencyResolutionManagement {
     }
 }
 rootProject.name = "PainelNexus"
-include(":app")
+include ':app'

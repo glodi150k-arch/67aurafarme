@@ -1,3 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Painel Nexus</string>
+    <string name="esp_box">BOX ESP</string>
+    <string name="esp_health">HEALTH BAR</string>
+    <string name="esp_name">NAME ESP</string>
+    <string name="esp_line">LINE ESP</string>
+    <string name="esp_skeleton">SKELETON</string>
+    <string name="esp_distance">DISTANCE</string>
+    <string name="aim_head">AIMBOT HEAD</string>
+    <string name="aim_body">AIMBOT BODY</string>
+    <string name="fov_circle">FOV CIRCLE</string>
+    <string name="fov_size">FOV SIZE</string>
+    <string name="no_recoil">NO RECOIL</string>
+    <string name="no_spread">NO SPREAD</string>
+    <string name="fast_switch">FAST SWITCH</string>
+    <string name="hide_icon">HIDE ICON</string>
+    <string name="small_btn">SMALL BUTTON</string>
+    <string name="status_connected">CONECTADO</string>
+    <string name="status_disconnected">DESCONECTADO</string>
+    <string name="btn_start">INICIAR PAINEL</string>
+    <string name="btn_stop">PARAR PAINEL</string>
+    <string name="permission_overlay">Permissão de Sobreposição</string>
+    <string name="grant_permission">Conceder Permissão</string>
 </resources>

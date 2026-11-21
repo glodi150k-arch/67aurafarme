@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Painel Nexus - Preto e Vermelho Neon -->
+    <color name="bg_dark">#0A0A0A</color>
+    <color name="bg_card">#111111</color>
+    <color name="bg_surface">#1A1A1A</color>
+    <color name="accent_red">#E8003D</color>
+    <color name="accent_red_dark">#B0002E</color>
+    <color name="accent_red_glow">#FF1A4F</color>
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#AAAAAA</color>
+    <color name="text_dim">#555555</color>
+    <color name="divider">#2A2A2A</color>
+    <color name="toggle_on">#E8003D</color>
+    <color name="toggle_off">#333333</color>
+    <color name="esp_white">#FFFFFF</color>
+    <color name="esp_health_green">#00FF66</color>
+    <color name="fov_circle">#FFFFFF</color>
+    <color name="overlay_bg">#CC0A0A0A</color>
+</resources>

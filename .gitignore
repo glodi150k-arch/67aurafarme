@@ -1,4 +1,12 @@
-node_modules/
-__pycache__/
-*.log
-.env
+*.iml
+.gradle/
+.idea/
+/local.properties
+/.DS_Store
+/build/
+/captures/
+.externalNativeBuild/
+.cxx/
+app/build/
+*.apk
+!gradle/wrapper/gradle-wrapper.jar

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="180dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_floating_panel"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <!-- DRAG HANDLE / TÍTULO -->
+    <LinearLayout
+        android:id="@+id/dragHandle"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="4dp">
+
+        <View
+            android:layout_width="4dp"
+            android:layout_height="4dp"
+            android:background="@color/accent_red"
+            android:layout_marginEnd="6dp"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="NEXUS"
+            android:textColor="@color/accent_red"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.2"/>
+
+        <TextView
+            android:id="@+id/btnMinimize"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:text="—"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            android:gravity="center"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/accent_red"
+        android:alpha="0.4"
+        android:layout_marginBottom="6dp"/>
+
+    <!-- ESP SECTION -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ESP"
+        android:textColor="@color/accent_red"
+        android:textSize="9sp"
+        android:textStyle="bold"
+        android:letterSpacing="0.3"
+        android:layout_marginBottom="4dp"/>
+
+    <include layout="@layout/item_float_toggle" android:id="@+id/fBoxEsp"/>
+    <include layout="@layout/item_float_toggle" android:id="@+id/fHealthEsp"/>
+    <include layout="@layout/item_float_toggle" android:id="@+id/fNameEsp"/>
+    <include layout="@layout/item_float_toggle" android:id="@+id/fLineEsp"/>
+    <include layout="@layout/item_float_toggle" android:id="@+id/fSkeletonEsp"/>
+    <include layout="@layout/item_float_toggle" android:id="@+id/fDistanceEsp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider"
+        android:layout_marginVertical="6dp"/>
+
+    <!-- AIMBOT SECTION -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="AIMBOT"
+        android:textColor="@color/accent_red"
+        android:textSize="9sp"
+        android:textStyle="bold"
+        android:letterSpacing="0.3"
+        android:layout_marginBottom="4dp"/>
+
+    <include layout="@layout/item_float_toggle" android:id="@+id/fAimHead"/>
+    <include layout="@layout/item_float_toggle" android:id="@+id/fAimBody"/>
+
+    <!-- FOV CIRCLE -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingVertical="4dp">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="FOV"
+            android:textColor="@color/text_primary"
+            android:textSize="11sp"/>
+
+        <Switch
+            android:id="@+id/swFovFloat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleX="0.75"
+            android:scaleY="0.75"
+            android:thumbTint="@color/text_primary"
+            android:trackTint="#E8003D"/>
+    </LinearLayout>
+
+    <SeekBar
+        android:id="@+id/seekFovFloat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:max="300"
+        android:progress="100"
+        android:progressTint="@color/accent_red"
+        android:thumbTint="@color/fov_circle"
+        android:layout_marginBottom="4dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/divider"
+        android:layout_marginVertical="6dp"/>
+
+    <!-- MISC SECTION -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MISC"
+        android:textColor="@color/accent_red"
+        android:textSize="9sp"
+        android:textStyle="bold"
+        android:letterSpacing="0.3"
+        android:layout_marginBottom="4dp"/>
+
+    <include layout="@layout/item_float_toggle" android:id="@+id/fNoRecoil"/>
+    <include layout="@layout/item_float_toggle" android:id="@+id/fNoSpread"/>
+    <include layout="@layout/item_float_toggle" android:id="@+id/fFastSwitch"/>
+
+</LinearLayout>

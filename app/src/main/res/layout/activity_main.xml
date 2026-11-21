@@ -1,43 +1,226 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#000000"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    android:padding="20dp">
+    android:background="@color/bg_dark"
+    android:fillViewport="true">
 
-    <ImageView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:adjustViewBounds="true"
-        android:contentDescription="Banner Painel Nexus"
-        android:src="@drawable/banner_painel" />
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Bem-vindos ao Painel"
-        android:textColor="#FFFFFF"
-        android:textSize="22sp"
-        android:textStyle="bold" />
+        <!-- HEADER -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingTop="24dp"
+            android:paddingBottom="20dp">
 
-    <Button
-        android:id="@+id/btnVpn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:backgroundTint="#D10000"
-        android:text="Conectar VPN local (Free Fire)"
-        android:textColor="#FFFFFF" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PAINEL"
+                android:textColor="@color/text_primary"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.3"/>
 
-    <Button
-        android:id="@+id/btnFloat"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:backgroundTint="#D10000"
-        android:text="Abrir flutuante"
-        android:textColor="#FFFFFF" />
-</LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NEXUS"
+                android:textColor="@color/accent_red"
+                android:textSize="36sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.2"
+                android:layout_marginTop="-6dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="v1.0"
+                android:textColor="@color/text_dim"
+                android:textSize="11sp"
+                android:layout_marginTop="2dp"/>
+        </LinearLayout>
+
+        <!-- STATUS CARD -->
+        <LinearLayout
+            android:id="@+id/cardStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card_accent"
+            android:orientation="horizontal"
+            android:padding="14dp"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="12dp">
+
+            <View
+                android:id="@+id/statusDot"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:background="#E8003D"
+                android:layout_marginEnd="10dp"/>
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="PAINEL INATIVO"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"/>
+
+            <TextView
+                android:id="@+id/tvTarget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Free Fire"
+                android:textColor="@color/accent_red"
+                android:textSize="11sp"/>
+        </LinearLayout>
+
+        <!-- BOTÃO PRINCIPAL -->
+        <Button
+            android:id="@+id/btnToggle"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="INICIAR PAINEL"
+            android:textColor="@color/text_primary"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:letterSpacing="0.15"
+            android:background="@drawable/bg_button_red"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btnPermission"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:text="PERMISSÃO DE SOBREPOSIÇÃO"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            android:background="@drawable/bg_button_dark"
+            android:layout_marginBottom="20dp"/>
+
+        <!-- SEÇÃO ESP -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_section_header"
+            android:padding="8dp"
+            android:layout_marginBottom="6dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="●  ESP"
+                android:textColor="@color/accent_red"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.2"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="4dp"
+            android:layout_marginBottom="12dp">
+
+            <include layout="@layout/item_toggle" android:id="@+id/itemBox"/>
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider"/>
+            <include layout="@layout/item_toggle" android:id="@+id/itemHealth"/>
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider"/>
+            <include layout="@layout/item_toggle" android:id="@+id/itemName"/>
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider"/>
+            <include layout="@layout/item_toggle" android:id="@+id/itemLine"/>
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider"/>
+            <include layout="@layout/item_toggle" android:id="@+id/itemSkeleton"/>
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider"/>
+            <include layout="@layout/item_toggle" android:id="@+id/itemDistance"/>
+        </LinearLayout>
+
+        <!-- SEÇÃO AIMBOT -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_section_header"
+            android:padding="8dp"
+            android:layout_marginBottom="6dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="●  AIMBOT"
+                android:textColor="@color/accent_red"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.2"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="4dp"
+            android:layout_marginBottom="12dp">
+
+            <include layout="@layout/item_toggle" android:id="@+id/itemAimHead"/>
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider"/>
+            <include layout="@layout/item_toggle" android:id="@+id/itemAimBody"/>
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider"/>
+            <include layout="@layout/item_fov" android:id="@+id/itemFov"/>
+        </LinearLayout>
+
+        <!-- SEÇÃO MISC -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_section_header"
+            android:padding="8dp"
+            android:layout_marginBottom="6dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="●  MISC"
+                android:textColor="@color/accent_red"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.2"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="4dp"
+            android:layout_marginBottom="20dp">
+
+            <include layout="@layout/item_toggle" android:id="@+id/itemNoRecoil"/>
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider"/>
+            <include layout="@layout/item_toggle" android:id="@+id/itemNoSpread"/>
+            <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider"/>
+            <include layout="@layout/item_toggle" android:id="@+id/itemFastSwitch"/>
+        </LinearLayout>
+
+        <!-- FOOTER -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Painel Nexus © 2024"
+            android:textColor="@color/text_dim"
+            android:textSize="10sp"
+            android:gravity="center"
+            android:paddingBottom="16dp"/>
+
+    </LinearLayout>
+</ScrollView>

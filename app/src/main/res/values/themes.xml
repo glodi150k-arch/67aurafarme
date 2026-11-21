@@ -1,8 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.Painel" parent="Theme.AppCompat.NoActionBar">
-        <item name="colorPrimary">#D10000</item>
-        <item name="colorPrimaryDark">#000000</item>
-        <item name="colorAccent">#FF1A1A</item>
-        <item name="android:windowBackground">#000000</item>
+    <style name="Theme.PainelNexus" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/accent_red</item>
+        <item name="colorPrimaryVariant">@color/accent_red_dark</item>
+        <item name="colorOnPrimary">@color/text_primary</item>
+        <item name="colorSurface">@color/bg_card</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="android:windowBackground">@color/bg_dark</item>
+        <item name="android:statusBarColor">@color/bg_dark</item>
+        <item name="android:navigationBarColor">@color/bg_dark</item>
+        <item name="android:windowLightStatusBar">false</item>
     </style>
 </resources>
